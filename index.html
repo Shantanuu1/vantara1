@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vantara Wildlife Sanctuary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Oswald', Arial, sans-serif;
+      background-color: #fff;
+      color: #333;
+    }
+    header {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 38px;
+      font-weight: 900;
+      line-height: 1.1;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 40px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #000;
+      background-color: #ffd700;
+      padding: 6px 12px;
+      border-radius: 5px;
+    }
+
+    .contact {
+      text-align: right;
+      line-height: 1.3;
+    }
+    .contact p {
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .contact h3 {
+      font-size: 20px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+
+    .hero {
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-left: 100px;
+      color: white;
+      background: url("wildlife.jpg") no-repeat center center/cover;
+      overflow: hidden;
+    }
+
+    
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.35);
+      z-index: 1;
+    }
+
+   
+    .hero-text {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      text-align: left;
+    }
+
+    .hero-text h1 {
+      font-size: 60px;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+    }
+
+    .hero-text p {
+      font-size: 22px;
+      font-weight: 500;
+      color: #ffffff;
+    }
+
+    
+    .initiatives {
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      padding: 80px 100px;
+      background-color: #f9f6f1;
+    }
+
+    .initiatives-text {
+      flex: 1;
+      padding-right: 50px;
+    }
+
+    .initiatives-text h2 {
+      font-size: 50px;
+      font-weight: 900;
+      margin-bottom: 30px;
+      color: #2b2b2b;
+    }
+
+    .initiative {
+      margin-bottom: 30px;
+      padding: 20px;
+      border-radius: 10px;
+      background: #e9ddcf;
+    }
+
+    .initiative h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .initiative p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    .initiatives-text ul {
+      list-style: none;
+      margin-top: 30px;
+    }
+
+    .initiatives-text ul li {
+      font-size: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .initiatives-text ul li::before {
+      content: "✔";
+      color: #4a4a4a;
+      font-weight: bold;
+    }
+
+    .initiatives-img {
+      flex: 1;
+    }
+
+    .initiatives-img img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Vantara Wildlife<br>Sanctuary</div>
+    <nav>
+      <ul>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="https://vantara1.onrender.com">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="contact">
+      <p>FREE CALL IN INDIA</p>
+      <h3>+91 8329607801</h3>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>EVERY ANIMAL<br>DESERVES LOVE</h1>
+      <p>Wildlife conservation is the conversation..!</p>
+    </div>
+  </section>
+
+ 
+  <section class="initiatives">
+    <div class="initiatives-text">
+      <h2>Core Initiatives</h2>
+      <div class="initiative">
+        <h3>Rescue</h3>
+        <p>At Vantara, rescue is the vital first step in giving animals a renewed chance at life. 
+           We locate and secure wildlife in distress due to habitat destruction, human conflict, or confinement. 
+           Our expert team ensures operations are carried out with precision and care, providing immediate 
+           veterinary attention and a safe environment where animals can begin their path to recovery.</p>
+      </div>
+      <ul>
+        <li>Treatment and Care</li>
+        <li>Conservation and Breeding</li>
+        <li>Rehabilitation and Reintroduction</li>
+      </ul>
+    </div>
+    <div class="initiatives-img">
+      <img src="tiger.jpg" alt="Tiger resting on rock">
+    </div>
+  </section>
+  
+
+</body>
+</html>

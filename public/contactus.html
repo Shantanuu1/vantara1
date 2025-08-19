@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - Vantara</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Georgia", serif;
+      background: url('bg.png') no-repeat center center fixed;
+      background-size: cover;
+      filter: brightness(1.2) contrast(1.2);
+      color: #2b2b2b;
+    }
+    .container { display: flex; min-height: 100vh; background: rgba(255,255,255,0.75); }
+    .contact-info { flex: 1; padding: 60px; box-sizing: border-box; color: #111; }
+    .contact-info h1 { font-size: 48px; margin-bottom: 30px; line-height: 1.2; }
+    .contact-info p { font-size: 14px; font-weight: bold; margin-top: 25px; margin-bottom: 5px; color: #333; }
+    .contact-info span { font-size: 16px; font-weight: normal; color: #000; }
+
+    .contact-form { flex: 1; display: flex; justify-content: center; align-items: center; padding: 40px;
+      background: rgba(255,255,255,0.85); box-sizing: border-box; border-left: 1px solid #e0dcd5; }
+    .form-box { width: 70%; max-width: 500px; background: #fff; padding: 30px 40px; border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
+
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 14px; margin-bottom: 8px; color: #444; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 10px; border: none; border-bottom: 1px solid #aaa; background: transparent;
+      font-size: 16px; outline: none;
+    }
+    .form-group textarea { min-height: 80px; }
+
+    .checkbox { margin-top: 15px; font-size: 12px; color: #444; }
+    .checkbox input { margin-right: 8px; }
+
+    .submit-btn { margin-top: 20px; background: #2b2b2b; color: white; padding: 12px 24px; border: none;
+      font-size: 16px; border-radius: 4px; cursor: pointer; width: 100%; }
+    .submit-btn:hover { background: #444; }
+    .optional { color: #999; font-style: italic; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Left Side -->
+    <div class="contact-info">
+      <h1>Get in Touch<br>With Us</h1>
+      <p>FOR ELEPHANT RESCUE RELATED QUERIES</p><span>+91 90160 12345</span>
+      <p>FOR OTHER WILD ANIMAL RESCUE RELATED QUERIES</p><span>+91 70160 12345</span>
+      <p>FOR GENERAL INQUIRIES</p><span>contact@vantara.in</span>
+      <p>FOR CAREER OPPORTUNITIES</p><span>careers@vantara.in</span>
+    </div>
+
+    <!-- Right Side Form -->
+    <div class="contact-form">
+      <div class="form-box">
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="request">Select type of request</label>
+            <select id="request" name="request" required>
+              <option value="">-- Select --</option>
+              <option value="elephant">Elephant Rescue</option>
+              <option value="wild-animal">Wild Animal Rescue</option>
+              <option value="general">General Inquiry</option>
+              <option value="career">Career</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone <span class="optional">(Optional)</span></label>
+            <input type="text" id="phone" name="phone">
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message <span class="optional">(Optional)</span></label>
+            <textarea id="message" name="message"></textarea>
+          </div>
+
+          <div class="checkbox">
+            <input type="checkbox" id="agree" name="agree" required>
+            <label for="agree">
+              By submitting this form, I agree to the collection and use of my personal data as per Privacy Policy.
+            </label>
+          </div>
+
+          <button type="submit" class="submit-btn">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const payload = {
+      request: document.getElementById('request').value,
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('phone').value,
+      message: document.getElementById('message').value
+    };
+
+    try {
+      const res = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        alert('Your information has been sent successfully!');
+        form.reset(); 
+      } else {
+        alert(data.message || 'Something went wrong');
+      }
+    } catch (err) {
+      alert('Network error. Is the server running?');
+    }
+  });
+</script>
+
+
+</body>
+</html>
